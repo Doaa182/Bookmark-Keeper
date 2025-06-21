@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <!-- meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="author" content="Doaa Diaa El Din" />
+    <meta name="generator" content="VS Code 1.99.3" />
+
+    <meta name="application-name" content="Bookmark App" />
+    <meta
+      name="description"
+      content="A simple website that allow you save and manage website bookmarks by entering site names and URLs of it."
+    />
+    <meta
+      name="keywords"
+      content="Bookmark App, Web Tool, Site Saver, Save Links, Bookmark Table"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- google fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=PT+Sans+Caption:wght@400;700&family=Pacifico&family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- fontawesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- title and favicon -->
+    <title>Bookmark</title>
+    <link
+      rel="shortcut icon"
+      href="./Assets/bookmark_favicon.png"
+      type="image/png"
+    />
+
+    <!-- css links -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/media_query.css" />
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+
+  <body>
+    <main class="pt-5">
+      <div class="h1-wapper text-center">
+        <h1 class="position-relative d-inline-block mb-3 mt-2">Bookmarker</h1>
+      </div>
+
+      <div class="container mt-5 mb-4 px-3 py-4 middle-container">
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="text-center">
+              <h2>
+                <i class="fas fa-bookmark"></i>
+                Bookmark your favorite sites
+                <i class="fas fa-bookmark"></i>
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="mb-3 position-relative">
+              <label for="SiteName" class="form-label mb-2 fw-semibold">
+                <i class="fa-solid fa-book-bookmark me-2"></i>
+                Site Name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="SiteName"
+                placeholder="Bookmark Name"
+                onkeyup="changeInputStyle(this)"
+              />
+
+              <i
+                class="fa-solid fa-circle-exclamation position-absolute"
+                id="invalidSiteNameIcon"
+              ></i>
+
+              <i
+                class="fa-solid fa-check position-absolute"
+                id="validSiteNameIcon"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="mb-3 position-relative">
+              <label for="SiteUrl" class="form-label mb-2 fw-semibold">
+                <i class="fas fa-link me-2"></i>Site URL
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="SiteUrl"
+                placeholder="Website URL"
+                onkeyup="changeInputStyle(this)"
+              />
+              <i
+                class="fa-solid fa-circle-exclamation position-absolute"
+                id="invalidSiteUrlIcon"
+              ></i>
+
+              <i
+                class="fa-solid fa-check position-absolute"
+                id="validSiteUrlIcon"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="btn-wrapper text-center">
+              <button
+                type="button"
+                class="btn btn-danger px-5 submit-btn"
+                onclick="addSite()"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container p-0">
+        <table class="table text-center bg-light">
+          <thead>
+            <th>Index</th>
+            <th>Website Name</th>
+            <th>Visit</th>
+            <th>Delete</th>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0 p-0 mb-4">
+            <div class="d-flex gap-2">
+              <div class="red-circle rounded-circle"></div>
+              <div class="yellow-circle rounded-circle"></div>
+              <div class="green-circle rounded-circle"></div>
+            </div>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body p-0">
+            <p class="pb-2 mb-0">
+              Site Name or Url is not valid, Please follow the rules below :
+            </p>
+
+            <ul class="list-unstyled">
+              <li>
+                <i class="fa-regular fa-circle-right p-2"></i>Site name must
+                contain at least 3 characters
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-right p-2"></i>Site URL must be a
+                valid one
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- js links -->
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <script src="./JS/main.js"></script>
+  </body>
+</html>
