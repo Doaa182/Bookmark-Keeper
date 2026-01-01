@@ -121,3 +121,24 @@ function changeInputStyle(inputElement) {
     }
   }
 }
+
+// Pencil Cursor
+var pencilCursor = document.querySelector(".pencil-cursor");
+
+document.addEventListener("mousemove", function (e) {
+  pencilCursor.style.top = `${e.clientY}px`;
+  pencilCursor.style.left = `${e.clientX}px`;
+
+  var elementTouched = e.target;
+
+  if (!elementTouched) return;
+
+  if (elementTouched.tagName == "BUTTON") {
+    pencilCursor.style.transform = `translate(-4%, -80%) scale(1.25)`;
+  } else if (elementTouched.tagName == "INPUT") {
+    pencilCursor.classList.add("isWriting");
+  } else {
+    pencilCursor.style.transform = `translate(-4%, -80%) scale(1)`;
+    pencilCursor.classList.remove("isWriting");
+  }
+});

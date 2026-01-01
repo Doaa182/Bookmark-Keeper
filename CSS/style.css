@@ -146,3 +146,49 @@ h2::selection {
   font-size: 18px;
   padding-top: 10px;
 }
+
+.pencil-cursor {
+  z-index: 2000;
+  pointer-events: none;
+  transition: transform 0.12s ease;
+  -webkit-transition: transform 0.12s ease;
+  -moz-transition: transform 0.12s ease;
+  -ms-transition: transform 0.12s ease;
+  -o-transition: transform 0.12s ease;
+}
+
+.pencil-cursor.isWriting {
+  animation: writing 1s ease-in-out infinite;
+  -webkit-animation: writing 1s ease-in-out infinite;
+}
+
+*,
+body,
+[type="button"]:not(:disabled),
+button:not(:disabled) {
+  cursor: none;
+}
+
+@keyframes writing {
+  0% {
+    transform: translate(-4%, -80%) rotate(0deg);
+    -webkit-transform: translate(-4%, -80%) rotate(0deg);
+    -moz-transform: translate(-4%, -80%) rotate(0deg);
+    -ms-transform: translate(-4%, -80%) rotate(0deg);
+    -o-transform: translate(-4%, -80%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-4%, -80%) rotate(10deg);
+    -webkit-transform: translate(-4%, -80%) rotate(10deg);
+    -moz-transform: translate(-4%, -80%) rotate(10deg);
+    -ms-transform: translate(-4%, -80%) rotate(10deg);
+    -o-transform: translate(-4%, -80%) rotate(10deg);
+  }
+  100% {
+    transform: translate(-4%, -80%) rotate(0deg);
+    -webkit-transform: translate(-4%, -80%) rotate(0deg);
+    -moz-transform: translate(-4%, -80%) rotate(0deg);
+    -ms-transform: translate(-4%, -80%) rotate(0deg);
+    -o-transform: translate(-4%, -80%) rotate(0deg);
+  }
+}
