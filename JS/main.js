@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var allSites = [];
 
 if (localStorage.getItem("allSites") != null) {
