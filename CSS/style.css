@@ -1,14 +1,15 @@
 *::selection {
-  background-color: #fec260;
+  background-color: var(--main-color);
 }
 
 body {
-  background-color: #f7ecde;
   font-family: "PT Sans Caption", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
 }
 
 h1 {
-  color: #352e28;
+  color: var(--text-main);
   font-size: 50px;
   font-family: "Pacifico", cursive;
 }
@@ -16,7 +17,7 @@ h1 {
 h1::after {
   content: "";
   position: absolute;
-  background-color: #fec260;
+  background-color: var(--main-color);
   width: 100%;
   height: 31%;
   bottom: 4%;
@@ -34,20 +35,28 @@ h1:hover::after {
 }
 
 .middle-container {
-  border-top: 2px #352e28 dotted;
-  border-bottom: 2px #352e28 dotted;
+  border-top: 2px var(--text-main) dotted;
+  border-bottom: 2px var(--text-main) dotted;
 }
 
 h2 {
   font-family: "Righteous", sans-serif;
   font-size: 25px;
-  background-image: linear-gradient(to right, #3ca55c 40%, #b5ac49 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 h2::selection {
-  color: #352e28;
+  color: var(--text-main);
+}
+
+body.dark-mode h1::after,
+body.dark-mode h2 {
+  background-image: linear-gradient(
+    45deg,
+    var(--main-color) 40%,
+    var(--sub-color) 70%
+  );
 }
 
 .form-control {
@@ -55,8 +64,17 @@ h2::selection {
 }
 
 .form-control:focus {
-  border-color: #d99c39;
-  box-shadow: 0 0 0 0.25rem #fec26055;
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 0.25rem var(--main-color-soft);
+}
+
+body.dark-mode .form-control {
+  background-color: #1f1b55;
+  color: var(--text-main);
+}
+
+body.dark-mode .form-control::placeholder {
+  color: var(--text-sub);
 }
 
 .fa-circle-exclamation {
@@ -71,38 +89,6 @@ h2::selection {
   bottom: 15%;
   color: #198754;
   display: none;
-}
-
-.btn-wrapper .submit-btn:active,
-.visit-btn,
-.delete-btn {
-  color: #212529;
-  background-color: transparent;
-  border-color: #212529;
-}
-
-.visit-btn {
-  color: #ffffff;
-  background-color: #9eb23b;
-  border-color: #9eb23b;
-}
-
-.visit-btn:hover {
-  color: #ffffff;
-  background-color: #8a9e23;
-  border-color: #6e8018;
-}
-
-.delete-btn {
-  color: #ffffff;
-  background-color: #eb1d36;
-  border-color: #eb1d36;
-}
-
-.delete-btn:hover {
-  color: #ffffff;
-  background-color: #d30820;
-  border-color: #ba081d;
 }
 
 .red-circle {
@@ -123,8 +109,13 @@ h2::selection {
   height: 20px;
 }
 
+body.dark-mode .modal-content {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
 .modal-content .btn-close {
-  color: #212529;
+  color: var(--text-main);
   opacity: 1;
 }
 
@@ -135,7 +126,7 @@ h2::selection {
 .modal-content p {
   font-family: "Bree Serif", serif;
   font-size: 21px;
-  color: #352e28;
+  color: var(--text-main);
 }
 
 .modal-content ul i {
@@ -155,6 +146,7 @@ h2::selection {
   -moz-transition: transform 0.12s ease;
   -ms-transition: transform 0.12s ease;
   -o-transition: transform 0.12s ease;
+  width: 32px;
 }
 
 .pencil-cursor.isWriting {
@@ -191,4 +183,53 @@ button:not(:disabled) {
     -ms-transform: translate(-4%, -80%) rotate(0deg);
     -o-transform: translate(-4%, -80%) rotate(0deg);
   }
+}
+
+.mode {
+  width: 40px;
+  height: 40px;
+  background-color: var(--main-color);
+  border-radius: 6px;
+}
+
+body.dark-mode .mode {
+  background-image: linear-gradient(
+    45deg,
+    var(--main-color) 40%,
+    var(--sub-color) 70%
+  );
+}
+
+.mode i {
+  font-size: 23px;
+}
+
+body.dark-mode table.table,
+body.dark-mode table.table th,
+body.dark-mode table.table td {
+  background-color: #222054;
+  color: var(--text-main);
+  border-color: var(--text-sub);
+}
+
+:root {
+  --bg-main: #f7ecde;
+
+  --text-main: #352e28;
+  --text-sub: #6b7280;
+
+  --main-color: #fec260;
+  --main-color-soft: #fec26055;
+}
+
+body.dark-mode {
+  --bg-main: #1d1a49;
+
+  --text-main: #e5e7eb;
+  --text-sub: #cbd5e0;
+
+  --main-color: #9333ea;
+  --main-color-soft: #9333ea55;
+
+  --sub-color: #2563eb;
 }

@@ -49,7 +49,14 @@
   </head>
 
   <body>
-    <main class="pt-5">
+    <main class="mt-5">
+      <div
+        class="mode d-flex justify-content-center align-items-center me-3 mt-3 position-absolute end-0 top-0 modeBtn"
+      >
+        <i class="fa-regular fa-moon modeBtn"></i>
+        <i class="fa-regular fa-sun d-none modeBtn"></i>
+      </div>
+
       <div class="h1-wapper text-center">
         <h1 class="position-relative d-inline-block mb-3 mt-2">Bookmarker</h1>
       </div>
@@ -58,7 +65,7 @@
         <div class="row mb-4">
           <div class="col-12">
             <div class="text-center">
-              <h2>
+              <h2 class="bg-success">
                 <i class="fas fa-bookmark"></i>
                 Bookmark your favorite sites
                 <i class="fas fa-bookmark"></i>
@@ -126,10 +133,11 @@
             <div class="btn-wrapper text-center">
               <button
                 type="button"
-                class="btn btn-danger px-5 submit-btn"
+                class="btn btn-success px-5 submit-btn"
                 onclick="addSite()"
               >
-                Submit
+                Add
+                <i class="fa-solid fa-plus"></i>
               </button>
             </div>
           </div>
@@ -137,12 +145,11 @@
       </div>
 
       <div class="container p-0">
-        <table class="table text-center bg-light">
+        <table class="table text-center">
           <thead>
             <th>Index</th>
             <th>Website Name</th>
-            <th>Visit</th>
-            <th>Delete</th>
+            <th>Actions</th>
           </thead>
           <tbody id="tableBody"></tbody>
         </table>

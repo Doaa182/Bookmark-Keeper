@@ -49,17 +49,27 @@ function displayAllSites() {
             <td>${allSites[i].name}</td>
             <td>
                 <button 
-                class="btn visit-btn" 
+                type="button"
+                class="btn btn-secondary" 
+                title="View"
                 onclick="window.open('${allSites[i].url}', '_blank')">
-                  <i class="fa-solid fa-eye"></i>
-                  Visit
+                <i class="fa-solid fa-eye"></i>
                 </button>
-              </td>
-
-              <td>
-                <button class="btn delete-btn" onclick="deleteSite(${i})" >
-                  <i class="fa-solid fa-trash-can"></i>
-                  Delete
+             
+                <button 
+                type="button"
+                class="btn btn-warning text-white" 
+                title="Edit"
+                onclick="editSite(${i})" >
+                <i class="fa-solid fa-pen-to-square"></i>                
+                </button>
+              
+                <button 
+                type="button"
+                class="btn btn-danger" 
+                title="Delete"
+                onclick="deleteSite(${i})" >
+                <i class="fa-solid fa-trash-can"></i>
                 </button>
               </td>
         </tr>
@@ -133,12 +143,47 @@ document.addEventListener("mousemove", function (e) {
 
   if (!elementTouched) return;
 
-  if (elementTouched.tagName == "BUTTON") {
+  if (
+    elementTouched.tagName == "BUTTON" ||
+    elementTouched.classList.contains("modeBtn")
+  ) {
     pencilCursor.style.transform = `translate(-4%, -80%) scale(1.25)`;
   } else if (elementTouched.tagName == "INPUT") {
     pencilCursor.classList.add("isWriting");
   } else {
     pencilCursor.style.transform = `translate(-4%, -80%) scale(1)`;
     pencilCursor.classList.remove("isWriting");
+  }
+
+  if (document.body.classList.contains("dark-mode")) {
+    pencilCursor.setAttribute("src", "./Assets/dark_pencil_cursor.png");
+  } else {
+    pencilCursor.setAttribute("src", "./Assets/pencil_cursor.png");
+  }
+});
+
+// Theme Toggle
+
+var themeToggle = document.querySelector(".mode");
+var darkMode = document.querySelector(".fa-moon");
+var lightMode = document.querySelector(".fa-sun");
+var favIcon = document.querySelector("head title").nextElementSibling;
+
+themeToggle.addEventListener("click", function (e) {
+  lightMode.classList.toggle("d-none");
+  darkMode.classList.toggle("d-none");
+  document.body.classList.toggle("dark-mode");
+
+  if (lightMode.classList.contains("d-none")) {
+    // add timestamp to prevent caching
+    favIcon.setAttribute(
+      "href",
+      "./Assets/bookmark_favicon.png?" + new Date().getTime()
+    );
+  } else {
+    favIcon.setAttribute(
+      "href",
+      "./Assets/dark_bookmark_favicon.png?" + new Date().getTime()
+    );
   }
 });
