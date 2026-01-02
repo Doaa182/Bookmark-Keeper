@@ -41,7 +41,6 @@ h1:hover::after {
 
 h2 {
   font-family: "Righteous", sans-serif;
-  font-size: 25px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
