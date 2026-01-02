@@ -144,7 +144,7 @@ document.addEventListener("mousemove", function (e) {
   if (!elementTouched) return;
 
   if (
-    elementTouched.tagName == "BUTTON" ||
+    elementTouched.closest("button") ||
     elementTouched.classList.contains("modeBtn")
   ) {
     pencilCursor.style.transform = `translate(-4%, -80%) scale(1.25)`;
@@ -175,7 +175,6 @@ themeToggle.addEventListener("click", function (e) {
   document.body.classList.toggle("dark-mode");
 
   if (lightMode.classList.contains("d-none")) {
-    // add timestamp to prevent caching
     favIcon.setAttribute(
       "href",
       "./Assets/bookmark_favicon.png?" + new Date().getTime()
