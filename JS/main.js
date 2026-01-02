@@ -98,37 +98,15 @@ function validateSiteUrl() {
 }
 
 function changeInputStyle(inputElement) {
-  inputElement.onblur = () => changeInputStyle(inputElement);
-
   var validateSiteNameOrUrl =
     inputElement.id == "SiteName" ? validateSiteName() : validateSiteUrl();
 
-  var siteNameOrUrlValidIcon =
-    inputElement.id == "SiteName" ? validSiteNameIcon : validSiteUrlIcon;
-
-  var siteNameOrUrlInvalidIcon =
-    inputElement.id == "SiteName" ? invalidSiteNameIcon : invalidSiteUrlIcon;
-
   if (validateSiteNameOrUrl == true) {
-    inputElement.style.borderColor = "#198754";
-    siteNameOrUrlValidIcon.style.display = "block";
-    siteNameOrUrlInvalidIcon.style.display = "none";
-
-    if (document.activeElement == inputElement) {
-      inputElement.style.boxShadow = "0 0 0 0.25rem rgba(25, 135, 84, 0.25)";
-    } else {
-      inputElement.style.boxShadow = "none";
-    }
+    inputElement.classList.add("is-valid");
+    inputElement.classList.remove("is-invalid");
   } else {
-    inputElement.style.borderColor = "#dc3545";
-    siteNameOrUrlValidIcon.style.display = "none";
-    siteNameOrUrlInvalidIcon.style.display = "block";
-
-    if (document.activeElement == inputElement) {
-      inputElement.style.boxShadow = "0 0 0 0.25rem rgba(220, 53, 69, 0.25)";
-    } else {
-      inputElement.style.boxShadow = "none";
-    }
+    inputElement.classList.add("is-invalid");
+    inputElement.classList.remove("is-valid");
   }
 }
 
