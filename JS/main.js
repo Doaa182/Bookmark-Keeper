@@ -58,7 +58,7 @@ function displayAllSites() {
              
                 <button 
                 type="button"
-                class="btn btn-warning text-white" 
+                class="btn btn-warning" 
                 title="Edit"
                 onclick="editSite(${i})" >
                 <i class="fa-solid fa-pen-to-square"></i>                
@@ -148,10 +148,14 @@ document.addEventListener("mousemove", function (e) {
     elementTouched.classList.contains("modeBtn")
   ) {
     pencilCursor.style.transform = `translate(-4%, -80%) scale(1.25)`;
+
+    pencilCursor.style.transition = "transform 0.15s ease-out";
   } else if (elementTouched.tagName == "INPUT") {
     pencilCursor.classList.add("isWriting");
   } else {
     pencilCursor.style.transform = `translate(-4%, -80%) scale(1)`;
+    pencilCursor.style.transition = "transform 0.15s ease-out";
+
     pencilCursor.classList.remove("isWriting");
   }
 

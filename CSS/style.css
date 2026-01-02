@@ -65,7 +65,7 @@ body.dark-mode h2 {
 
 .form-control:focus {
   border-color: var(--main-color);
-  box-shadow: 0 0 0 0.25rem var(--main-color-soft);
+  box-shadow: 0 0 0 0.25rem var(--main-color-shadow);
 }
 
 body.dark-mode .form-control {
@@ -141,11 +141,6 @@ body.dark-mode .modal-content {
 .pencil-cursor {
   z-index: 2000;
   pointer-events: none;
-  transition: transform 0.12s ease;
-  -webkit-transition: transform 0.12s ease;
-  -moz-transition: transform 0.12s ease;
-  -ms-transition: transform 0.12s ease;
-  -o-transition: transform 0.12s ease;
   width: 32px;
 }
 
@@ -190,6 +185,23 @@ button:not(:disabled) {
   height: 40px;
   background-color: var(--main-color);
   border-radius: 6px;
+  box-shadow: 0 0 8px var(--main-color-shadow),
+    0 0 16px var(--main-color-shadow);
+  transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+}
+
+.mode:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px var(--main-color-shadow),
+    0 0 24px var(--main-color-shadow);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }
 
 body.dark-mode .mode {
@@ -198,6 +210,13 @@ body.dark-mode .mode {
     var(--main-color) 40%,
     var(--sub-color) 70%
   );
+  box-shadow: 0 0 8px var(--main-color-shadow),
+    0 0 16px var(--main-color-shadow);
+}
+
+body.dark-mode .mode:hover {
+  box-shadow: 0 0 12px var(--main-color-shadow),
+    0 0 24px var(--main-color-shadow);
 }
 
 .mode i {
@@ -212,6 +231,62 @@ body.dark-mode table.table td {
   border-color: var(--text-sub);
 }
 
+body.dark-mode .btn-success {
+  background-color: #00cc66;
+  border-color: #00cc66;
+  color: #071b0f;
+  box-shadow: 0 0 8px rgba(0, 204, 102, 0.6);
+}
+
+body.dark-mode .btn-success:hover {
+  background-color: #00ff80;
+  border-color: #00ff80;
+  box-shadow: 0 0 14px rgba(0, 255, 128, 0.85);
+}
+
+.btn-warning,
+.btn-warning:hover {
+  color: #ffffff;
+}
+
+body.dark-mode .btn-warning {
+  background-color: #cc9a00;
+  border-color: #cc9a00;
+  color: #1b1407;
+  box-shadow: 0 0 8px rgba(204, 154, 0, 0.6);
+}
+
+body.dark-mode .btn-warning:hover {
+  background-color: #ffbf00;
+  border-color: #ffbf00;
+  box-shadow: 0 0 14px rgba(255, 191, 0, 0.85);
+}
+
+body.dark-mode .btn-danger {
+  background-color: #cc0033;
+  border-color: #cc0033;
+  color: #1b070b;
+  box-shadow: 0 0 8px rgba(204, 0, 51, 0.6);
+}
+
+body.dark-mode .btn-danger:hover {
+  background-color: #ff004d;
+  border-color: #ff004d;
+  box-shadow: 0 0 14px rgba(255, 0, 77, 0.85);
+}
+body.dark-mode .btn-secondary {
+  background-color: #6b7280;
+  border-color: #6b7280;
+  color: #0f172a;
+  box-shadow: 0 0 8px rgba(148, 163, 184, 0.5);
+}
+
+body.dark-mode .btn-secondary:hover {
+  background-color: #9ca3af;
+  border-color: #9ca3af;
+  box-shadow: 0 0 14px rgba(203, 213, 225, 0.8);
+}
+
 :root {
   --bg-main: #f7ecde;
 
@@ -219,7 +294,7 @@ body.dark-mode table.table td {
   --text-sub: #6b7280;
 
   --main-color: #fec260;
-  --main-color-soft: #fec26055;
+  --main-color-shadow: #fec26055;
 }
 
 body.dark-mode {
@@ -229,7 +304,7 @@ body.dark-mode {
   --text-sub: #cbd5e0;
 
   --main-color: #9333ea;
-  --main-color-soft: #9333ea55;
+  --main-color-shadow: #9333ea55;
 
   --sub-color: #2563eb;
 }
