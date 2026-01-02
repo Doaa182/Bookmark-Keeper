@@ -8,12 +8,7 @@ if (localStorage.getItem("allSites") != null) {
 var siteNameInput = document.getElementById("SiteName");
 var siteUrlInput = document.getElementById("SiteUrl");
 
-var invalidSiteNameIcon = document.getElementById("invalidSiteNameIcon");
-var validSiteNameIcon = document.getElementById("validSiteNameIcon");
-
-var invalidSiteUrlIcon = document.getElementById("invalidSiteUrlIcon");
-var validSiteUrlIcon = document.getElementById("validSiteUrlIcon");
-
+// CRUDs
 function addSite() {
   var site = {
     name: siteNameInput.value,
@@ -25,10 +20,12 @@ function addSite() {
     localStorage.setItem("allSites", JSON.stringify(allSites));
     clearForm();
   } else {
-    var invalidModal = new bootstrap.Modal(
-      document.getElementById("exampleModal")
-    );
-    invalidModal.show();
+    // var invalidModal = new bootstrap.Modal(
+    //   document.getElementById("exampleModal")
+    // );
+    // invalidModal.show();
+
+    showModal();
   }
 
   displayAllSites();
@@ -86,6 +83,32 @@ function deleteSite(idx) {
   displayAllSites();
 }
 
+// Modal
+var modal = document.getElementById("exampleModal");
+
+// Show modal
+function showModal() {
+  modal.classList.add("show", "d-block");
+  modal.classList.remove("d-none", "fade");
+  modal.style.backgroundColor = "rgba(0,0,0,0.5)";
+}
+
+// Hide modal
+function hideModal() {
+  modal.classList.remove("show", "d-block");
+  modal.classList.add("d-none", "fade");
+}
+
+var closeBtn = document.querySelector(".btn-close");
+
+// Modal Close Btn
+closeBtn.addEventListener("click", hideModal);
+
+modal.addEventListener("click", function (e) {
+  if (e.target === modal) hideModal();
+});
+
+// Validation
 function validateSiteName() {
   var siteNameRegex = /^\w{3,}(\s+\w+)*$/;
   return siteNameRegex.test(siteNameInput.value);
@@ -145,7 +168,6 @@ document.addEventListener("mousemove", function (e) {
 });
 
 // Theme Toggle
-
 var themeToggle = document.querySelector(".mode");
 var darkMode = document.querySelector(".fa-moon");
 var lightMode = document.querySelector(".fa-sun");
