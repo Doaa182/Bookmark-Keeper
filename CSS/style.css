@@ -185,8 +185,6 @@ button:not(:disabled) {
   height: 40px;
   background-color: var(--main-color);
   border-radius: 6px;
-  box-shadow: 0 0 8px var(--main-color-shadow),
-    0 0 16px var(--main-color-shadow);
   transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -195,13 +193,8 @@ button:not(:disabled) {
 }
 
 .mode:hover {
-  transform: scale(1.1);
   box-shadow: 0 0 12px var(--main-color-shadow),
     0 0 24px var(--main-color-shadow);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  -o-transform: scale(1.1);
 }
 
 body.dark-mode .mode {
@@ -210,8 +203,6 @@ body.dark-mode .mode {
     var(--main-color) 40%,
     var(--sub-color) 70%
   );
-  box-shadow: 0 0 8px var(--main-color-shadow),
-    0 0 16px var(--main-color-shadow);
 }
 
 body.dark-mode .mode:hover {
@@ -285,6 +276,10 @@ body.dark-mode .btn-secondary:hover {
   background-color: #9ca3af;
   border-color: #9ca3af;
   box-shadow: 0 0 14px rgba(203, 213, 225, 0.8);
+}
+
+body.dark-mode .btn-close {
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
 }
 
 :root {
