@@ -58,7 +58,9 @@ function searchSite() {
   var searchResults = [];
 
   for (let i = 0; i < allSites.length; i++) {
-    if (allSites[i].name.includes(searchInput.value)) {
+    if (
+      allSites[i].name.toLowerCase().includes(searchInput.value.toLowerCase())
+    ) {
       searchResults.push(allSites[i]);
     }
   }
