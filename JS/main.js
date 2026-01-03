@@ -2,11 +2,14 @@ var allSites = [];
 
 if (localStorage.getItem("allSites") != null) {
   allSites = JSON.parse(localStorage.getItem("allSites"));
-  displayAllSites();
+  displayAllSites(allSites);
 }
 
 var siteNameInput = document.getElementById("SiteName");
 var siteUrlInput = document.getElementById("SiteUrl");
+var addBtn = document.querySelector(".add-btn");
+var siteIdx = undefined;
+var searchInput = document.querySelector(".search-bar");
 
 // CRUDs
 function addSite() {
@@ -15,9 +18,59 @@ function addSite() {
     url: siteUrlInput.value,
   };
 
+  allSites.push(site);
+}
+
+function editForm(idx) {
+  siteNameInput.value = allSites[idx].name;
+  siteUrlInput.value = allSites[idx].url;
+
+  addBtn.innerHTML = `Edit <i class="fa-solid fa-pen-to-square"></i>`;
+  addBtn.classList.add("btn-warning");
+  addBtn.classList.remove("btn-success");
+
+  siteIdx = idx;
+}
+
+function editSite() {
+  allSites[siteIdx].name = siteNameInput.value;
+  allSites[siteIdx].url = siteUrlInput.value;
+
+  addBtn.innerHTML = `Add <i class="fa-solid fa-plus"></i>`;
+  addBtn.classList.remove("btn-warning");
+  addBtn.classList.add("btn-success");
+}
+
+function deleteSite(idx) {
+  allSites.splice(idx, 1);
+  localStorage.setItem("allSites", JSON.stringify(allSites));
+  displayAllSites(allSites);
+}
+
+function searchSite() {
+  var searchResults = [];
+
+  for (let i = 0; i < allSites.length; i++) {
+    if (allSites[i].name.includes(searchInput.value)) {
+      console.log(allSites[i].name, searchInput.value);
+      searchResults.push(allSites[i]);
+    }
+  }
+
+  displayAllSites(searchResults);
+}
+
+function addOrEdit() {
   if (validateSiteName() == true && validateSiteUrl() == true) {
-    allSites.push(site);
+    if (addBtn.innerHTML.includes("Add")) {
+      addSite();
+    } else if (addBtn.innerHTML.includes("Edit")) {
+      editSite();
+    }
+
     localStorage.setItem("allSites", JSON.stringify(allSites));
+
+    displayAllSites(allSites);
     clearForm();
   } else {
     // var invalidModal = new bootstrap.Modal(
@@ -27,8 +80,6 @@ function addSite() {
 
     showModal();
   }
-
-  displayAllSites();
 }
 
 function clearForm() {
@@ -36,20 +87,20 @@ function clearForm() {
   siteUrlInput.value = "";
 }
 
-function displayAllSites() {
+function displayAllSites(arr) {
   var concatSites = "";
 
-  for (var i = 0; i < allSites.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     concatSites += `
         <tr>
             <td>${i + 1}</td>
-            <td>${allSites[i].name}</td>
+            <td>${arr[i].name}</td>
             <td>
                 <button 
                 type="button"
                 class="btn btn-secondary" 
                 title="View"
-                onclick="window.open('${allSites[i].url}', '_blank')">
+                onclick="window.open('${arr[i].url}', '_blank')">
                 <i class="fa-solid fa-eye"></i>
                 </button>
              
@@ -57,7 +108,7 @@ function displayAllSites() {
                 type="button"
                 class="btn btn-warning" 
                 title="Edit"
-                onclick="editSite(${i})" >
+                onclick="editForm(${i})" >
                 <i class="fa-solid fa-pen-to-square"></i>                
                 </button>
               
@@ -75,12 +126,6 @@ function displayAllSites() {
   }
 
   document.getElementById("tableBody").innerHTML = concatSites;
-}
-
-function deleteSite(idx) {
-  allSites.splice(idx, 1);
-  localStorage.setItem("allSites", JSON.stringify(allSites));
-  displayAllSites();
 }
 
 // Modal

@@ -117,7 +117,7 @@
               <button
                 type="button"
                 class="btn btn-success px-5 add-btn"
-                onclick="addSite()"
+                onclick="addOrEdit()"
               >
                 Add
                 <i class="fa-solid fa-plus"></i>
@@ -127,8 +127,22 @@
         </div>
       </div>
 
-      <!-- table -->
+      <!-- table & search bar -->
       <div class="container p-0">
+        <div class="row mb-2">
+          <div class="col-12">
+            <div class="mb-3 mx-auto w-50">
+              <input
+                type="text"
+                class="form-control search-bar"
+                placeholder="Search"
+                aria-label="Search"
+                onkeyup="searchSite()"
+              />
+            </div>
+          </div>
+        </div>
+
         <table class="table text-center">
           <thead>
             <th>Index</th>
