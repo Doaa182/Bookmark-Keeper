@@ -6,14 +6,14 @@ A simple website that allow you save and manage website bookmarks by entering si
 
 ## 💡 Key Features and JavaScript Logic:
 
-🔸 Add, edit, delete, and view bookmarks (full CRUD functionality) 
-🔸 Store and retrieve bookmarked sites using LocalStorage for persistent data 
-🔸 Real-time, case-insensitive search to quickly find saved websites 
-🔸 Real-time input validation using Regex for site names and URLs with instant visual feedback 
-🔸 Custom validation modal to clearly guide users when inputs are invalid 
-🔸 Light / Dark mode toggle to enhance accessibility and user preference 
-🔸 Clean, responsive UI built with Bootstrap 
-🔸 Custom animated pencil cursor to boost interactivity and user engagement 
+🔸 Add, edit, delete, and view bookmarks (full CRUD functionality)  
+🔸 Store and retrieve bookmarked sites using LocalStorage for persistent data  
+🔸 Real-time, case-insensitive search to quickly find saved websites  
+🔸 Real-time input validation using Regex for site names and URLs with instant visual feedback  
+🔸 Custom validation modal to clearly guide users when inputs are invalid  
+🔸 Light / Dark mode toggle to enhance accessibility and user preference  
+🔸 Clean, responsive UI built with Bootstrap  
+🔸 Custom animated pencil cursor to boost interactivity and user engagement  
 
 ---
 
