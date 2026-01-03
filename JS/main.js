@@ -1,18 +1,18 @@
 var allSites = [];
 
-if (localStorage.getItem("allSites") != null) {
-  allSites = JSON.parse(localStorage.getItem("allSites"));
-  if (allSites.length != 0) {
-    displayAllSites(allSites);
-  }
-}
-
 var siteNameInput = document.getElementById("SiteName");
 var siteUrlInput = document.getElementById("SiteUrl");
 var addBtn = document.querySelector(".add-btn");
 var siteIdx = undefined;
 var searchInput = document.querySelector(".search-bar");
 var tableSearchWrapper = document.querySelector(".table-search-wrap");
+
+if (localStorage.getItem("allSites") != null) {
+  allSites = JSON.parse(localStorage.getItem("allSites"));
+  if (allSites.length != 0) {
+    displayAllSites(allSites);
+  }
+}
 
 // CRUDs
 function addSite() {
@@ -95,7 +95,6 @@ function clearForm() {
 
 function displayAllSites(arr) {
   var concatSites = "";
-
   tableSearchWrapper.classList.remove("d-none");
 
   for (var i = 0; i < arr.length; i++) {
