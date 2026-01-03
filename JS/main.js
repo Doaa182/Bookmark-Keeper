@@ -2,7 +2,9 @@ var allSites = [];
 
 if (localStorage.getItem("allSites") != null) {
   allSites = JSON.parse(localStorage.getItem("allSites"));
-  displayAllSites(allSites);
+  if (allSites.length != 0) {
+    displayAllSites(allSites);
+  }
 }
 
 var siteNameInput = document.getElementById("SiteName");
@@ -10,6 +12,7 @@ var siteUrlInput = document.getElementById("SiteUrl");
 var addBtn = document.querySelector(".add-btn");
 var siteIdx = undefined;
 var searchInput = document.querySelector(".search-bar");
+var tableSearchWrapper = document.querySelector(".table-search-wrap");
 
 // CRUDs
 function addSite() {
@@ -44,7 +47,11 @@ function editSite() {
 function deleteSite(idx) {
   allSites.splice(idx, 1);
   localStorage.setItem("allSites", JSON.stringify(allSites));
-  displayAllSites(allSites);
+  if (allSites.length == 0) {
+    tableSearchWrapper.classList.add("d-none");
+  } else {
+    displayAllSites(allSites);
+  }
 }
 
 function searchSite() {
@@ -52,7 +59,6 @@ function searchSite() {
 
   for (let i = 0; i < allSites.length; i++) {
     if (allSites[i].name.includes(searchInput.value)) {
-      console.log(allSites[i].name, searchInput.value);
       searchResults.push(allSites[i]);
     }
   }
@@ -90,8 +96,11 @@ function clearForm() {
 function displayAllSites(arr) {
   var concatSites = "";
 
+  tableSearchWrapper.classList.remove("d-none");
+
   for (var i = 0; i < arr.length; i++) {
     concatSites += `
+     
         <tr>
             <td>${i + 1}</td>
             <td>${arr[i].name}</td>
@@ -122,10 +131,11 @@ function displayAllSites(arr) {
               </td>
         </tr>
     
+    
     `;
   }
 
-  document.getElementById("tableBody").innerHTML = concatSites;
+  document.querySelector("tbody").innerHTML = concatSites;
 }
 
 // Modal
